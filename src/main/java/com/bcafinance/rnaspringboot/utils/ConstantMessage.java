@@ -45,6 +45,12 @@ public class ConstantMessage {
     public final static String SUCCESS = "";
     public final static String ERROR = "";
     public final static String WARNING_EMAIL_EXIST = "EMAIL SUDAH TERDAFTAR";
+
+    public final static String WARNING_EMAIL_MANDATORY = "EMAIL TIDAK VALID";
+    public final static String WARNING_KODEGROUP_MANDATORY = "KODE GROUP TIDAK VALID";
+    public final static String WARNING_WILAYAHREGION_MANDATORY = "WILAYAH REGION TIDAK VALID";
+
+    public final static String WARNING_PHONENUMBER_MANDATORY = "EMAIL TIDAK VALID";
     public final static String WARNING_CUSTOMER_NOT_FOUND = "CUSTOMER BELUM TERDAFTAR";
 
     public final static String WARNING_SUPPLIER_NOT_FOUND = "SUPPLIER BELUM TERDAFTAR";

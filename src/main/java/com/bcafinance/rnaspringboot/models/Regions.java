@@ -3,13 +3,13 @@ Created By IntelliJ IDEA 2022.2.3 (Comunity Edition)
 Build #IU-222.4345.14, built on October 5, 2022
 @Author Azim a.k.a. Azim
 Java Developer
-Create on 30/11/2022
-@Last Modified 30/11/2022 14:10
+Create on 01/12/2022
+@Last Modified 01/12/2022 15:11
 Version 1.0
 */
+
 import com.bcafinance.rnaspringboot.utils.ConstantMessage;
 import lombok.Data;
-import org.apache.logging.log4j.message.Message;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -17,33 +17,21 @@ import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "MstSuppliers")
-public class Suppliers {
-
-    @ManyToOne
-    private Regions regions;
+@Table(name = "MstRegions")
+public class Regions {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "SupplierID")
+    @Column(name = "RegionID")
     private Long id;
 
-    @NotEmpty(message = ConstantMessage.WARNING_EMAIL_MANDATORY)
-    @Column(name = "EmailSupplier", length = 50, nullable = false, unique = true)
-    private String emailSupplier;
+//    @NotEmpty(message = ConstantMessage.WARNING_KODEGROUP_MANDATORY)
+    @Column(name = "KodeRegion", length = 50, nullable = false, unique = true)
+    private String kodeRegion;
 
-    @NotEmpty(message = ConstantMessage.WARNING_PHONENUMBER_MANDATORY)
-    @Column(name = "PhoneNumber", length = 16, nullable = false, unique = true)
-    private String phoneNumber;
-
-    @Column(name = "NameSupplier", length = 150, nullable = false)
-    private String nameSupplier;
-
-    @Column(name = "AddressSupplier", nullable = false)
-    private String addressSupplier;
-
-    @Column(name = "Products", nullable = false)
-    private String products;
+//    @NotEmpty(message = ConstantMessage.WARNING_WILAYAHREGION_MANDATORY)
+    @Column(name = "NameRegion", length = 16, nullable = false, unique = true)
+    private String nameRegion;
 
     @Column(name = "Description", nullable = false)
     private String description;
@@ -63,7 +51,6 @@ public class Suppliers {
     @Column(name = "IsActive", nullable = false)
     private boolean isActive = true;
 
-    public Suppliers() {
+    public Regions() {
     }
-
 }
