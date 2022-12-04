@@ -8,21 +8,22 @@ Create on 30/11/2022
 Version 1.0
 */
 import com.bcafinance.rnaspringboot.utils.ConstantMessage;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
-import org.apache.logging.log4j.message.Message;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Entity
 @Table(name = "MstSuppliers")
-public class Suppliers {
+public class Suppliers implements Serializable {
 
-    @ManyToOne
-    private Regions regions;
-
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "SupplierID")
@@ -41,9 +42,6 @@ public class Suppliers {
 
     @Column(name = "AddressSupplier", nullable = false)
     private String addressSupplier;
-
-    @Column(name = "Products", nullable = false)
-    private String products;
 
     @Column(name = "Description", nullable = false)
     private String description;
@@ -66,4 +64,115 @@ public class Suppliers {
     public Suppliers() {
     }
 
+    @ManyToOne
+    private Regions regions;
+
+
+    @ManyToMany(mappedBy = "suppliers")
+    @JsonBackReference
+    private Set<Foods> foodList = new HashSet<Foods>();
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getEmailSupplier() {
+        return emailSupplier;
+    }
+
+    public void setEmailSupplier(String emailSupplier) {
+        this.emailSupplier = emailSupplier;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getNameSupplier() {
+        return nameSupplier;
+    }
+
+    public void setNameSupplier(String nameSupplier) {
+        this.nameSupplier = nameSupplier;
+    }
+
+    public String getAddressSupplier() {
+        return addressSupplier;
+    }
+
+    public void setAddressSupplier(String addressSupplier) {
+        this.addressSupplier = addressSupplier;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public String getModifiedBy() {
+        return modifiedBy;
+    }
+
+    public void setModifiedBy(String modifiedBy) {
+        this.modifiedBy = modifiedBy;
+    }
+
+    public Date getModifiedDate() {
+        return modifiedDate;
+    }
+
+    public void setModifiedDate(Date modifiedDate) {
+        this.modifiedDate = modifiedDate;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
+
+    public Regions getRegions() {
+        return regions;
+    }
+
+    public void setRegions(Regions regions) {
+        this.regions = regions;
+    }
+
+    public Set<Foods> getFoodList() {
+        return foodList;
+    }
+
+    public void setFoodList(Set<Foods> foodList) {
+        this.foodList = foodList;
+    }
 }

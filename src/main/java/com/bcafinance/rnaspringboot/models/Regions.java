@@ -25,12 +25,12 @@ public class Regions {
     @Column(name = "RegionID")
     private Long id;
 
-//    @NotEmpty(message = ConstantMessage.WARNING_KODEGROUP_MANDATORY)
+    @NotEmpty(message = ConstantMessage.WARNING_KODEGROUP_MANDATORY)
     @Column(name = "KodeRegion", length = 50, nullable = false, unique = true)
     private String kodeRegion;
 
-//    @NotEmpty(message = ConstantMessage.WARNING_WILAYAHREGION_MANDATORY)
-    @Column(name = "NameRegion", length = 16, nullable = false, unique = true)
+    @NotEmpty(message = ConstantMessage.WARNING_WILAYAHREGION_MANDATORY)
+    @Column(name = "NameRegion", nullable = false, unique = true)
     private String nameRegion;
 
     @Column(name = "Description", nullable = false)
@@ -51,6 +51,4 @@ public class Regions {
     @Column(name = "IsActive", nullable = false)
     private boolean isActive = true;
 
-    public Regions() {
-    }
 }

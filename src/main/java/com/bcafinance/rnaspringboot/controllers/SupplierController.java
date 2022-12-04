@@ -8,18 +8,23 @@ Create on 30/11/2022
 Version 1.0
 */
 
+import com.bcafinance.rnaspringboot.dto.SupplierDTO;
 import com.bcafinance.rnaspringboot.handler.ResourceNotFoundException;
 import com.bcafinance.rnaspringboot.handler.ResponseHandler;
 import com.bcafinance.rnaspringboot.models.Suppliers;
 import com.bcafinance.rnaspringboot.services.SupplierService;
 import com.bcafinance.rnaspringboot.utils.ConstantMessage;
 import lombok.Getter;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeMap;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Collection;
 import java.util.List;
 
 @RestController
@@ -28,7 +33,8 @@ public class SupplierController {
     @Getter
     private SupplierService supplierService;
 
-
+    @Autowired
+    private ModelMapper modelMapper;
     public SupplierController() {
     }
 
@@ -52,37 +58,20 @@ public class SupplierController {
         return new ResponseHandler().
                 generateResponse(ConstantMessage.SUCCESS_FIND_BY,HttpStatus.OK,"",null,null);
     }
+    @GetMapping("/suppliers/datas/all/dto/0")
+    public ResponseEntity<Object> findAllSupplierDTO()throws Exception{
 
-//    @GetMapping("/v2/suppliers/{id}")
-//    public ResponseEntity<Object> getSuppliersById(@PathVariable("id") long id) throws Exception {
-//        Suppliers suppliers = supplierService.findByIdSuppliers(id);
-//
-//        if(suppliers != null)
-//        {
-//            return new ResponseHandler().
-//                    generateResponse(ConstantMessage.SUCCESS_FIND_BY, HttpStatus.OK,suppliers,null,null);
-//        }
-//        else
-//        {
-//            throw new ResourceNotFoundException(ConstantMessage.WARNING_NOT_FOUND);
-//        }
-//    }
+        List<Suppliers> lsSupplier = supplierService.findAllSuppliers();
 
-    @GetMapping("/suppliers/datas/all/0")
-    public ResponseEntity<Object> findAllSuplliers()throws Exception{
-
-        int data = 0;
-        List<Suppliers> lsSuppliers = supplierService.findAllSuppliers();
-
-        if(lsSuppliers.size()==0)
+        if(lsSupplier.size()==0)
         {
             throw new ResourceNotFoundException(ConstantMessage.WARNING_DATA_EMPTY);
         }
+        List<SupplierDTO> lsEmployeeDTO = modelMapper.map(lsSupplier, new TypeToken<List<SupplierDTO>>() {}.getType());
 
         return new ResponseHandler().
-                generateResponse(ConstantMessage.SUCCESS_FIND_BY,HttpStatus.OK,lsSuppliers,null,null);
+                generateResponse(ConstantMessage.SUCCESS_FIND_BY,HttpStatus.OK,lsEmployeeDTO,null,null);
     }
-
     @GetMapping("/suppliers/datas/search/{nameSupplier}")
     public ResponseEntity<Object> getSupplierByNameSupplier(@PathVariable("nameSupplier") String nameSupplier)throws Exception{
 
@@ -112,4 +101,38 @@ public class SupplierController {
         supplierService.saveAllSuppliers(suppliers);
         return new ResponseHandler().generateResponse(ConstantMessage.SUCCESS_SAVE, HttpStatus.CREATED,null,null,null);
     }
+
+//    @GetMapping("/suppliers/datas/dto/all")
+//    public ResponseEntity<Object> findAllSupplierDTO()throws Exception{
+//
+//        List<Suppliers> lsSupplier = supplierService.findAllSuppliers();
+//
+//        if(lsSupplier.size()==0)
+//        {
+//            throw new ResourceNotFoundException(ConstantMessage.WARNING_DATA_EMPTY);
+//        }
+//        List<SupplierDTO> lsSupplierDTO = modelMapper.map(lsSupplier, new org.modelmapper.TypeToken<List<SupplierDTO>>() {}.getType());
+//
+//        return new ResponseHandler().
+//                generateResponse(ConstantMessage.SUCCESS_FIND_BY,HttpStatus.OK,lsSupplierDTO,null,null);
+//    }
+
+
+    @GetMapping("/suppliers/{id}")
+    public ResponseEntity<Object> getSupplierById(@PathVariable("id") long id) throws Exception {
+        Suppliers suppliers = supplierService.findByIdSuppliers(id);
+
+        if(suppliers != null)
+        {
+            SupplierDTO supplierDTO = modelMapper.map(suppliers,SupplierDTO.class);
+            return new ResponseHandler().
+                    generateResponse(ConstantMessage.SUCCESS_FIND_BY, HttpStatus.OK,supplierDTO,null,null);
+        }
+        else
+        {
+            throw new ResourceNotFoundException(ConstantMessage.WARNING_NOT_FOUND);
+        }
+    }
+
+
 }

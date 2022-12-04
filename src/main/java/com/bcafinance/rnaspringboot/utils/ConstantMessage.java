@@ -31,6 +31,8 @@ public class ConstantMessage {
     public final static String ERROR_INTERNAL_SERVER = "INTERNAL SERVER ERROR";
     public final static String ERROR_MAIL_FORM_JSON = "Malformed JSON request";
     public final static String ERROR_EMAIL_FORMAT_INVALID = "FORMAT EMAIL TIDAK SESUAI (Nomor/Karakter@Nomor/Karakter)";
+
+    public final static String WARNING_REGION_NAME_LENGTH = "NAMA REGION MEAKSIMAL 50";
     public final static String ERROR_PHONE_NUMBER_FORMAT_INVALID = "FORMAT NOMOR HANDPHONE TIDAK SESUAI (+628XX-)";
     public final static String ERROR_DATE_FORMAT_YYYYMMDD = "FORMAT TANGGAL TIDAK SESUAI (YYYY-mm-dd)";
 
@@ -58,6 +60,8 @@ public class ConstantMessage {
     /*Products*/
     public final static String WARNING_PRODUCT_NOT_FOUND = "PRODUK TIDAK DITEMUKAN";
     public final static String WARNING_SUPPLIER_DATA_NOT_FOUND = "SUPPLIER TIDAK DITEMUKAN";
+
+    public final static String WARNING_DATA_NOT_FOUND = "DATA TIDAK DITEMUKAN";
     public final static String WARNING_PRODUCT_PRICE_SOP = "HARGA TIDAK BOLEH 1/2 ATAU 3 KALI DARI HARGA SEBELUMNYA";
 
     /*Employee*/

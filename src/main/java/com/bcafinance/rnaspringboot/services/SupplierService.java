@@ -10,6 +10,7 @@ Version 1.0
 
 import com.bcafinance.rnaspringboot.handler.FormatValidation;
 import com.bcafinance.rnaspringboot.handler.ResourceNotFoundException;
+import com.bcafinance.rnaspringboot.models.Products;
 import com.bcafinance.rnaspringboot.models.Suppliers;
 import com.bcafinance.rnaspringboot.repos.SupplierRepo;
 import com.bcafinance.rnaspringboot.utils.ConstantMessage;
@@ -34,10 +35,15 @@ public class SupplierService {
         this.supplierRepo = supplierRepo;
     }
 
-    public List<Suppliers> findAllSuppliers()
-    {
+//    public List<Suppliers> findAllSuppliers()
+//    {
+//        return supplierRepo.findAll();
+//    }
+
+    public List<Suppliers> findAllSuppliers() {
         return supplierRepo.findAll();
     }
+
 
 //    public Suppliers findByIdSuppliers(Long id) throws Exception
 //    {
@@ -50,7 +56,6 @@ public class SupplierService {
         if(suppliers.getEmailSupplier()==null)throw new DataIntegrityViolationException(ConstantMessage.ERROR_DATA_INVALID);
         if(suppliers.getNameSupplier()=="" || suppliers.getNameSupplier()==null)throw new DataIntegrityViolationException(ConstantMessage.ERROR_DATA_INVALID);
         if(suppliers.getPhoneNumber()==null)throw new DataIntegrityViolationException(ConstantMessage.ERROR_DATA_INVALID);
-        if(suppliers.getProducts()==null)throw new DataIntegrityViolationException(ConstantMessage.ERROR_DATA_INVALID);
         if(suppliers.getDescription()==null)throw new DataIntegrityViolationException(ConstantMessage.ERROR_DATA_INVALID);
 
         FormatValidation.phoneNumberFormatValidation(suppliers.getPhoneNumber());
@@ -96,7 +101,7 @@ public class SupplierService {
         if (c.getAddressSupplier() != null
                 && !Objects.equals(suppliers.getAddressSupplier(), c.getAddressSupplier())
                 && !c.getAddressSupplier().equals("")) {
-            suppliers.setAddressSupplier(c.getAddressSupplier());//BERARTI ADA PERUBAHAN DI SINI
+            suppliers.setAddressSupplier(c.getAddressSupplier());
         }
 
         if (c.getPhoneNumber() != null &&
@@ -107,12 +112,6 @@ public class SupplierService {
             suppliers.setPhoneNumber(c.getPhoneNumber());
         }
 
-        if (c.getProducts() != null &&
-                c.getProducts().length() > 0 &&
-                !Objects.equals(suppliers.getProducts(), c.getProducts())) {
-
-            suppliers.setProducts(c.getProducts());
-        }
         if (c.getDescription() != null &&
                 c.getDescription().length() > 0 &&
                 !Objects.equals(suppliers.getDescription(), c.getDescription())) {
@@ -131,7 +130,6 @@ public class SupplierService {
                 System.out.println(lsTest.get(i).getEmailSupplier());
                 System.out.println(lsTest.get(i).getAddressSupplier());
                 System.out.println(lsTest.get(i).getPhoneNumber());
-                System.out.println(lsTest.get(i).getProducts());
                 System.out.println(lsTest.get(i).getDescription());
                 System.out.println();
 
@@ -148,6 +146,12 @@ public class SupplierService {
     public List<Suppliers> findByNameSupplierNotLike(String nameSupplier) throws Exception
     {
         return supplierRepo.findByNameSupplierNotLike(nameSupplier);
+    }
+
+    public Suppliers findByIdSuppliers(Long id) throws Exception
+    {
+        return supplierRepo.findById(id).
+                orElseThrow(() -> new ResourceNotFoundException(ConstantMessage.WARNING_NOT_FOUND));
     }
 
     @Transactional(rollbackFor = {Exception.class})
