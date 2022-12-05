@@ -101,6 +101,15 @@ public class FoodController {
         }
     }
 
+    @GetMapping("/foods/findbyname/{nameFood}")
+    public ResponseEntity<Object> getFoodByNameFoodLike(@PathVariable("nameFood") String nameSupplier)throws Exception{
+
+        return new ResponseHandler().
+                generateResponse(ConstantMessage.SUCCESS_FIND_BY,HttpStatus.OK,foodService.findByNameFood(nameSupplier),null,null);
+    }
+
+
+
     @PostMapping("/foods/supplier/{id}")
     public ResponseEntity<Object> addSupplier(@RequestBody Suppliers suppliers, @PathVariable("id") Long foodId) throws Exception {
         foodService.addSupplier(suppliers,foodId);

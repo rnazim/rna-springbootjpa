@@ -11,6 +11,7 @@ Version 1.0
 import com.bcafinance.rnaspringboot.handler.ResourceNotFoundException;
 import com.bcafinance.rnaspringboot.models.Foods;
 import com.bcafinance.rnaspringboot.models.Products;
+import com.bcafinance.rnaspringboot.models.Regions;
 import com.bcafinance.rnaspringboot.models.Suppliers;
 import com.bcafinance.rnaspringboot.repos.FoodRepo;
 import com.bcafinance.rnaspringboot.repos.ProductRepo;
@@ -89,9 +90,15 @@ public class FoodService {
     {
 //        int intK = 5/0;
         return foodRepo.findById(id).
-                orElseThrow(() -> new ResourceNotFoundException(ConstantMessage.WARNING_PRODUCT_NOT_FOUND));
+                orElseThrow(() -> new ResourceNotFoundException(ConstantMessage.WARNING_FOOD_DATA_NOT_FOUND));
     }
     public List<Foods> findAllFoods()throws Exception{
         return foodRepo.findAll();
+    }
+
+    public Foods findByNameFood(String nameFood) throws Exception
+    {
+        return foodRepo.findByNameFood(nameFood).orElseThrow(()->
+                new ResourceNotFoundException(ConstantMessage.WARNING_FOOD_DATA_NOT_FOUND));
     }
 }

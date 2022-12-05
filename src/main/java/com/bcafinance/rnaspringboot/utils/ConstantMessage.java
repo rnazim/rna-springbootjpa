@@ -24,6 +24,8 @@ public class ConstantMessage {
     /*Global*/
     public final static String SUCCESS_SAVE = "DATA BERHASIL DIBUAT";
     public final static String SUCCESS_FIND_BY = "OK";
+
+    public final static String SUCCESS_SEND_EMAIL = "SILAHKAN CEK EMAIL YANG TELAH ANDA DAFTARKAN";
     public final static String WARNING_NOT_FOUND = "DATA TIDAK DITEMUKAN";
     public final static String WARNING_DATA_EMPTY = "DATA TIDAK ADA";
 
@@ -49,6 +51,8 @@ public class ConstantMessage {
     public final static String WARNING_EMAIL_EXIST = "EMAIL SUDAH TERDAFTAR";
 
     public final static String WARNING_EMAIL_MANDATORY = "EMAIL TIDAK VALID";
+
+    public final static String WARNING_USERNAME_MENDATORY = "USERNAME TIDAK VALID";
     public final static String WARNING_KODEGROUP_MANDATORY = "KODE GROUP TIDAK VALID";
     public final static String WARNING_WILAYAHREGION_MANDATORY = "WILAYAH REGION TIDAK VALID";
 
@@ -61,6 +65,9 @@ public class ConstantMessage {
     public final static String WARNING_PRODUCT_NOT_FOUND = "PRODUK TIDAK DITEMUKAN";
     public final static String WARNING_SUPPLIER_DATA_NOT_FOUND = "SUPPLIER TIDAK DITEMUKAN";
 
+    public final static String WARNING_FOOD_DATA_NOT_FOUND = "FOOD TIDAK DITEMUKAN";
+
+    public final static String WARNING_REGION_DATA_NOT_FOUND = "REGION TIDAK DITEMUKAN";
     public final static String WARNING_DATA_NOT_FOUND = "DATA TIDAK DITEMUKAN";
     public final static String WARNING_PRODUCT_PRICE_SOP = "HARGA TIDAK BOLEH 1/2 ATAU 3 KALI DARI HARGA SEBELUMNYA";
 

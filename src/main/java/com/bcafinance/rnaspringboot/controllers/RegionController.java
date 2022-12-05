@@ -114,10 +114,11 @@ public class RegionController {
     }
 
     @GetMapping("/regions/datas/searchlike/{nameRegion}")
-    public ResponseEntity<Object> getRegionByNameRegionLike(@PathVariable("nameRegion") String nameSupplier)throws Exception{
+    public ResponseEntity<Object> getRegionByNameRegionLike(@PathVariable("nameRegion") String nameRegion)throws Exception{
 
+        Regions regions = regionService.findByNameRegion(nameRegion);
+        RegionDTO regionDTO = modelMapper.map(regions,RegionDTO.class);
         return new ResponseHandler().
-                generateResponse(ConstantMessage.SUCCESS_FIND_BY,HttpStatus.OK,regionService.findByNameRegion(nameSupplier),null,null);
-    }
+                generateResponse(ConstantMessage.SUCCESS_FIND_BY, HttpStatus.OK,regionDTO,null,null);    }
 
 }

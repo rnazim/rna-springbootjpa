@@ -86,12 +86,12 @@ public class RegionService {
     public Regions findByIdRegions(Long id) throws Exception
     {
         return regionRepo.findById(id).
-                orElseThrow(() -> new ResourceNotFoundException(ConstantMessage.WARNING_NOT_FOUND));
+                orElseThrow(() -> new ResourceNotFoundException(ConstantMessage.WARNING_REGION_DATA_NOT_FOUND));
     }
 
     public Regions findByNameRegion(String nameRegion) throws Exception
     {
         return regionRepo.findByNameRegion(nameRegion).orElseThrow(()->
-                new ResourceNotFoundException(ConstantMessage.WARNING_SUPPLIER_DATA_NOT_FOUND));
+                new ResourceNotFoundException(ConstantMessage.WARNING_REGION_DATA_NOT_FOUND));
     }
 }

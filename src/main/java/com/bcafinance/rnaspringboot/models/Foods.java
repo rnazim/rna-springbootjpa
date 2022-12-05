@@ -17,7 +17,6 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-@Data
 @Entity
 @Table(name = "MstFoods")
 public class Foods  implements Serializable {
@@ -59,7 +58,7 @@ public class Foods  implements Serializable {
             joinColumns = @JoinColumn(name="FoodID",referencedColumnName = "FoodID"),
             inverseJoinColumns = @JoinColumn(name = "SupplierID",referencedColumnName = "SupplierID")
     )
-//    @JsonManagedReference
+
     private Set<Suppliers> suppliers = new HashSet<Suppliers>();
 
     public Long getId() {

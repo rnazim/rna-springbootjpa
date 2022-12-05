@@ -8,9 +8,11 @@ Create on 30/11/2022
 Version 1.0
 */
 
+import com.bcafinance.rnaspringboot.dto.RegionDTO;
 import com.bcafinance.rnaspringboot.dto.SupplierDTO;
 import com.bcafinance.rnaspringboot.handler.ResourceNotFoundException;
 import com.bcafinance.rnaspringboot.handler.ResponseHandler;
+import com.bcafinance.rnaspringboot.models.Regions;
 import com.bcafinance.rnaspringboot.models.Suppliers;
 import com.bcafinance.rnaspringboot.services.SupplierService;
 import com.bcafinance.rnaspringboot.utils.ConstantMessage;
@@ -86,11 +88,13 @@ public class SupplierController {
                 generateResponse(ConstantMessage.SUCCESS_FIND_BY,HttpStatus.OK,supplierService.findByNameSupplierNotLike(nameSupplier),null,null);
     }
 
-    @GetMapping("/suppliers/datas/searchlike/{nameSupplier}")
+    @GetMapping("/suppliers/findbyname/{nameSupplier}")
     public ResponseEntity<Object> getSupplierByNameSupplierLike(@PathVariable("nameSupplier") String nameSupplier)throws Exception{
 
+        Suppliers suppliers = supplierService.findByNameSupplierLike(nameSupplier);
+        SupplierDTO supplierDTO = modelMapper.map(suppliers,SupplierDTO.class);
         return new ResponseHandler().
-                generateResponse(ConstantMessage.SUCCESS_FIND_BY,HttpStatus.OK,supplierService.findByNameSupplierLike(nameSupplier),null,null);
+                generateResponse(ConstantMessage.SUCCESS_FIND_BY, HttpStatus.OK,supplierDTO,null,null);
     }
 
     @PostMapping("/suppliers/bat")
