@@ -30,20 +30,20 @@ public class TakeTourController {
 
     @PostMapping("/runnerz")
     public ResponseEntity<Object> executionClass(@RequestBody List<Email> lsEmail) throws Exception {
-        String[] strArr = new String[lsEmail.size()];
-
-        for(int i=0;i<strArr.length;i++)
-        {
-            strArr[i] = lsEmail.get(i).getEmail();
-            System.out.println("EMAIL KE - "+i+" : "+lsEmail.get(i));
-        }
-        System.out.println(System.getProperty("user.dir"));
-        SMTPCore sc = new SMTPCore();
-        ConfigProperties.getEmailPassword();
-        System.out.println(sc.sendMailWithAttachment(strArr,
-                "INI HANYA TEST",new ReadTextFileSB("\\data\\template-BCAF.html").getContentFile(),
-                "SSL",
-                new String[] {ResourceUtils.getFile("classpath:\\data\\sample.docx").getAbsolutePath()}));
+//        String[] strArr = new String[lsEmail.size()];
+//
+//        for(int i=0;i<strArr.length;i++)
+//        {
+//            strArr[i] = lsEmail.get(i).getEmail();
+//            System.out.println("EMAIL KE - "+i+" : "+lsEmail.get(i));
+//        }
+//        System.out.println(System.getProperty("user.dir"));
+//        SMTPCore sc = new SMTPCore();
+//        ConfigProperties.getEmailPassword();
+//        System.out.println(sc.sendMailWithAttachment(strArr,
+//                "INI HANYA TEST",new ReadTextFileSB("\\data\\template-BCAF.html").getContentFile(),
+//                "SSL",
+//                new String[] {ResourceUtils.getFile("classpath:\\data\\sample.docx").getAbsolutePath()}));
         return new ResponseHandler().generateResponse(ConstantMessage.SUCCESS_SEND_EMAIL, HttpStatus.CREATED,null,null,null);
     }
 }

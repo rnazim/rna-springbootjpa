@@ -22,9 +22,13 @@ public class ConstantMessage {
     public final static String REGEX_DATE_DDMMYYYY  = "^([0-2][0-9]||3[0-1])-(0[0-9]||1[0-2])-([0-9][0-9])?[0-9][0-9]$";
 
     /*Global*/
+
+    public final static String CONTENT_TYPE_CSV = "text/csv";
     public final static String SUCCESS_SAVE = "DATA BERHASIL DIBUAT";
     public final static String SUCCESS_FIND_BY = "OK";
 
+    public final static String ERROR_UPLOAD_CSV = "UPLOAD FILE GAGAL ";
+    public final static String ERROR_NOT_CSV_FILE = "FORMAT FILE HARUS CSV ";
     public final static String SUCCESS_SEND_EMAIL = "SILAHKAN CEK EMAIL YANG TELAH ANDA DAFTARKAN";
     public final static String WARNING_NOT_FOUND = "DATA TIDAK DITEMUKAN";
     public final static String WARNING_DATA_EMPTY = "DATA TIDAK ADA";
@@ -34,6 +38,7 @@ public class ConstantMessage {
     public final static String ERROR_MAIL_FORM_JSON = "Malformed JSON request";
     public final static String ERROR_EMAIL_FORMAT_INVALID = "FORMAT EMAIL TIDAK SESUAI (Nomor/Karakter@Nomor/Karakter)";
 
+    public final static String SUCCESS_TRANSFER_WALLET = "TRANSFER WALLET BERHASIL";
     public final static String WARNING_REGION_NAME_LENGTH = "NAMA REGION MEAKSIMAL 50";
     public final static String ERROR_PHONE_NUMBER_FORMAT_INVALID = "FORMAT NOMOR HANDPHONE TIDAK SESUAI (+628XX-)";
     public final static String ERROR_DATE_FORMAT_YYYYMMDD = "FORMAT TANGGAL TIDAK SESUAI (YYYY-mm-dd)";
@@ -52,10 +57,22 @@ public class ConstantMessage {
 
     public final static String WARNING_EMAIL_MANDATORY = "EMAIL TIDAK VALID";
 
+    public final static String WARNING_REKENING_ASAL = "REKENING ASAL KOSONG";
+
+    public final static String WARNING_NAME_MAX_LENGTH = "VALUE LEBIH DARI BATAS";
+
+    public final static String WARNING_REKENING_PENERIMA = "REKENING ASAL KOSONG";
+
+    public final static String WARNING_NOMINAL_REQUIRED = "NOMINAL KOSONG";
+
+    public final static String WARNING_SALDO_LIMIT = "SALDO TIDAK MENCUKUPI";
+
+    public final static String WARNING_FAIL_TRANSFER = "TRANSFER GAGAL";
     public final static String WARNING_USERNAME_MENDATORY = "USERNAME TIDAK VALID";
     public final static String WARNING_KODEGROUP_MANDATORY = "KODE GROUP TIDAK VALID";
     public final static String WARNING_WILAYAHREGION_MANDATORY = "WILAYAH REGION TIDAK VALID";
 
+    public final static String WARNING_FULLNAME_MANDATORY = "NAMA AWAL WAJIB DIISI";
     public final static String WARNING_PHONENUMBER_MANDATORY = "EMAIL TIDAK VALID";
     public final static String WARNING_CUSTOMER_NOT_FOUND = "CUSTOMER BELUM TERDAFTAR";
 
@@ -70,6 +87,10 @@ public class ConstantMessage {
     public final static String WARNING_REGION_DATA_NOT_FOUND = "REGION TIDAK DITEMUKAN";
     public final static String WARNING_DATA_NOT_FOUND = "DATA TIDAK DITEMUKAN";
     public final static String WARNING_PRODUCT_PRICE_SOP = "HARGA TIDAK BOLEH 1/2 ATAU 3 KALI DARI HARGA SEBELUMNYA";
+    public final static String ERROR_TIDAK_BOLEH_KOSONG_VAR_1 = "DATA VAR 1 TIDAK BOLEH KOSONG";
+    public final static String ERROR_TIDAK_BOLEH_KOSONG_VAR_2 = "DATA VAR 2 TIDAK BOLEH KOSONG";
+
+    public final static String ERROR_TIDAK_BOLEH_KOSONG_VAR_3 = "DATA VAR 3 TIDAK BOLEH KOSONG";
 
     /*Employee*/
 
